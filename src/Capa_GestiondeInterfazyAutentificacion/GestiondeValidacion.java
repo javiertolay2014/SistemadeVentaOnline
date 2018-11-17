@@ -50,7 +50,7 @@ public class GestiondeValidacion {
                 ventanaprincipal.setVisible(true);
                 InterfazPrincipal.MenuPersonal.setEnabled(true);
                 InterfazPrincipal.MenuProductos.setEnabled(true);
-                InterfazPrincipal.MenuInformes.setEnabled(true);
+                
            //     InterfazPrincipal.JmiHerramientas.setEnabled(true);
                 InterfazPrincipal.JmIUsuarios.setEnabled(true);
                 InterfazPrincipal.JmIClientes.setEnabled(true);

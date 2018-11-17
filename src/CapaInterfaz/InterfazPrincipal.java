@@ -1,5 +1,5 @@
 package CapaInterfaz;
-//VERSION 1.0
+//VERSION 1.1
 import CapadeGestionDeBD.conexion;
 import java.awt.Graphics;
 import java.beans.PropertyVetoException;
@@ -86,13 +86,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         JmIProductos = new javax.swing.JMenuItem();
         JmIStock = new javax.swing.JMenuItem();
         JmIStock1 = new javax.swing.JMenuItem();
-        MenuInformes = new javax.swing.JMenu();
-        JmIStockCritico = new javax.swing.JMenuItem();
-        JmIVentasPorFecha = new javax.swing.JMenuItem();
-        JmIProdVendFEc = new javax.swing.JMenuItem();
-        JmITotalRecaudacion = new javax.swing.JMenuItem();
-        JmIVentasPorCategorias = new javax.swing.JMenuItem();
-        JmIHistorial = new javax.swing.JMenuItem();
         jMIAyuda = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
 
@@ -139,7 +132,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jmIVenta.setBackground(new java.awt.Color(36, 33, 33));
         jmIVenta.setForeground(new java.awt.Color(245, 245, 245));
         jmIVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImanegesMenuBar/ventaMenu.png"))); // NOI18N
-        jmIVenta.setText("Reserva");
+        jmIVenta.setText("Venta");
         jmIVenta.setToolTipText("");
         jmIVenta.setActionCommand("");
         jmIVenta.setAlignmentX(0.0F);
@@ -275,99 +268,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         menuBar.add(MenuProductos);
 
-        MenuInformes.setBackground(new java.awt.Color(36, 33, 33));
-        MenuInformes.setForeground(new java.awt.Color(245, 245, 245));
-        MenuInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImanegesMenuBar/reporteMenu.png"))); // NOI18N
-        MenuInformes.setText("Registros");
-        MenuInformes.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        MenuInformes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        MenuInformes.setOpaque(true);
-        MenuInformes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MenuInformesMouseClicked(evt);
-            }
-        });
-
-        JmIStockCritico.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.SHIFT_MASK));
-        JmIStockCritico.setBackground(new java.awt.Color(36, 33, 33));
-        JmIStockCritico.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        JmIStockCritico.setForeground(new java.awt.Color(255, 255, 255));
-        JmIStockCritico.setText("Stock de productos");
-        JmIStockCritico.setOpaque(true);
-        JmIStockCritico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JmIStockCriticoActionPerformed(evt);
-            }
-        });
-        MenuInformes.add(JmIStockCritico);
-
-        JmIVentasPorFecha.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.SHIFT_MASK));
-        JmIVentasPorFecha.setBackground(new java.awt.Color(36, 33, 33));
-        JmIVentasPorFecha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        JmIVentasPorFecha.setForeground(new java.awt.Color(255, 255, 255));
-        JmIVentasPorFecha.setText("Registro de Ventas");
-        JmIVentasPorFecha.setOpaque(true);
-        JmIVentasPorFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JmIVentasPorFechaActionPerformed(evt);
-            }
-        });
-        MenuInformes.add(JmIVentasPorFecha);
-
-        JmIProdVendFEc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.SHIFT_MASK));
-        JmIProdVendFEc.setBackground(new java.awt.Color(36, 33, 33));
-        JmIProdVendFEc.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        JmIProdVendFEc.setForeground(new java.awt.Color(255, 255, 255));
-        JmIProdVendFEc.setText("Registro de Reservas");
-        JmIProdVendFEc.setOpaque(true);
-        JmIProdVendFEc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JmIProdVendFEcActionPerformed(evt);
-            }
-        });
-        MenuInformes.add(JmIProdVendFEc);
-
-        JmITotalRecaudacion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.SHIFT_MASK));
-        JmITotalRecaudacion.setBackground(new java.awt.Color(36, 33, 33));
-        JmITotalRecaudacion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        JmITotalRecaudacion.setForeground(new java.awt.Color(255, 255, 255));
-        JmITotalRecaudacion.setText("Total Recaudacion con detalle de productos ");
-        JmITotalRecaudacion.setOpaque(true);
-        JmITotalRecaudacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JmITotalRecaudacionActionPerformed(evt);
-            }
-        });
-        MenuInformes.add(JmITotalRecaudacion);
-
-        JmIVentasPorCategorias.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.SHIFT_MASK));
-        JmIVentasPorCategorias.setBackground(new java.awt.Color(36, 33, 33));
-        JmIVentasPorCategorias.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        JmIVentasPorCategorias.setForeground(new java.awt.Color(255, 255, 255));
-        JmIVentasPorCategorias.setText("Total Recaudacion por Categorias");
-        JmIVentasPorCategorias.setOpaque(true);
-        JmIVentasPorCategorias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JmIVentasPorCategoriasActionPerformed(evt);
-            }
-        });
-        MenuInformes.add(JmIVentasPorCategorias);
-
-        JmIHistorial.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_6, java.awt.event.InputEvent.SHIFT_MASK));
-        JmIHistorial.setBackground(new java.awt.Color(36, 33, 33));
-        JmIHistorial.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        JmIHistorial.setForeground(new java.awt.Color(255, 255, 255));
-        JmIHistorial.setText("Historial de modificacion de Stock de productos");
-        JmIHistorial.setOpaque(true);
-        JmIHistorial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JmIHistorialActionPerformed(evt);
-            }
-        });
-        MenuInformes.add(JmIHistorial);
-
-        menuBar.add(MenuInformes);
-
         jMIAyuda.setBackground(new java.awt.Color(36, 33, 33));
         jMIAyuda.setForeground(new java.awt.Color(245, 245, 245));
         jMIAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImanegesMenuBar/ayuda.png"))); // NOI18N
@@ -456,24 +356,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_JmIUsuariosActionPerformed
 
-    private void JmIStockCriticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmIStockCriticoActionPerformed
-
-    }//GEN-LAST:event_JmIStockCriticoActionPerformed
-
-    private void JmIVentasPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmIVentasPorFechaActionPerformed
- 
-    }//GEN-LAST:event_JmIVentasPorFechaActionPerformed
-
-    private void JmIProdVendFEcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmIProdVendFEcActionPerformed
-        
-        
-
-    }//GEN-LAST:event_JmIProdVendFEcActionPerformed
-
-    private void JmITotalRecaudacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmITotalRecaudacionActionPerformed
-    
-    }//GEN-LAST:event_JmITotalRecaudacionActionPerformed
-
     private void jmIVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIVentasActionPerformed
         abrirVenta();
     }//GEN-LAST:event_jmIVentasActionPerformed
@@ -517,18 +399,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
      
     }//GEN-LAST:event_JmIStock1ActionPerformed
 
-    private void JmIVentasPorCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmIVentasPorCategoriasActionPerformed
-    
-    }//GEN-LAST:event_JmIVentasPorCategoriasActionPerformed
-
-    private void JmIHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmIHistorialActionPerformed
-
-    }//GEN-LAST:event_JmIHistorialActionPerformed
-
-    private void MenuInformesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuInformesMouseClicked
-     
-    }//GEN-LAST:event_MenuInformesMouseClicked
-
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -565,17 +435,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JMenuItem JmIClientes;
-    javax.swing.JMenuItem JmIHistorial;
-    javax.swing.JMenuItem JmIProdVendFEc;
     javax.swing.JMenuItem JmIProductos;
     javax.swing.JMenuItem JmIStock;
     javax.swing.JMenuItem JmIStock1;
-    javax.swing.JMenuItem JmIStockCritico;
-    javax.swing.JMenuItem JmITotalRecaudacion;
     public static javax.swing.JMenuItem JmIUsuarios;
-    javax.swing.JMenuItem JmIVentasPorCategorias;
-    javax.swing.JMenuItem JmIVentasPorFecha;
-    public static javax.swing.JMenu MenuInformes;
     public static javax.swing.JMenu MenuPersonal;
     public static javax.swing.JMenu MenuProductos;
     public static javax.swing.JDesktopPane deskPricipal;
