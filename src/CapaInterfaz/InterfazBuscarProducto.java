@@ -1,5 +1,8 @@
 package CapaInterfaz;
-import CapadeGestionDeBD.Persona;
+
+
+//import CapadeGestionDeBD.Dproducto;
+import CapadeGestionDeBD.Producto;
 import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -7,14 +10,15 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-public class InterfazBuscarCliente extends javax.swing.JInternalFrame {
-static int Comprueba;
+public class InterfazBuscarProducto extends javax.swing.JInternalFrame {
 
+    public static int comprobarProducto;
 
-    public InterfazBuscarCliente() {
+    public InterfazBuscarProducto() {
         initComponents();
+         
         mostrar("");
-       
+      
 
         jTabla.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
 
@@ -33,18 +37,16 @@ static int Comprueba;
         });
     }
 
-
-
     public void mostrar(String buscar) {
         try {
             DefaultTableModel modelo;
-            Persona funcion = new Persona();
+            Producto funcion = new Producto();
             modelo = funcion.mostrar();
 
-           jTabla.setModel(modelo);
+            jTabla.setModel(modelo);
+            // ocultar_columnas();
+//            lblTotalRegistros.setText("CANTIDAD DE REGISTROS : " + Integer.toString(prenda.totalRegistros));
 
-        
-          
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -54,24 +56,25 @@ static int Comprueba;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTabla = jTabla = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false; //Disallow the editing of any cell
             }
         };
-        jLabel2 = new javax.swing.JLabel();
-
-        jLabel1.setText("jLabel1");
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconifiable(true);
 
         jPanel2.setBackground(new java.awt.Color(36, 33, 33));
-        jPanel2.setForeground(new java.awt.Color(36, 33, 33));
+        jPanel2.setName(""); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(207, 207, 207));
+        jLabel10.setText("Productos en el Sistema.");
 
         jTabla.setBackground(new java.awt.Color(36, 33, 33));
         jTabla.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -98,28 +101,24 @@ static int Comprueba;
         });
         jScrollPane2.setViewportView(jTabla);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(207, 207, 207));
-        jLabel2.setText("Clientes Registrados en el Sistema");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(jLabel2)
-                .addContainerGap(179, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(258, 258, 258))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addGap(55, 55, 55))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,26 +137,42 @@ static int Comprueba;
 
     private void jTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaMouseClicked
 
+
     }//GEN-LAST:event_jTablaMouseClicked
 
+        
     private void jTablaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaMousePressed
         if (evt.getClickCount() == 2) {
-
             int fila = jTabla.getSelectedRow();
-            String cod,telefono;
-            String nombre;
-
-            cod = jTabla.getValueAt(fila, 0).toString();
-            nombre = jTabla.getValueAt(fila, 1).toString();
-            telefono = jTabla.getValueAt(fila, 2).toString();
-
-        
-          InterfazVenta_Reserva.txtNombre_cliente.setText(nombre);
-         
-             
-
+            String cod;
+                cod = jTabla.getValueAt(fila, 0).toString();
+                Producto prenda = new Producto();
+                prenda  = prenda.BuscarPorCodigo(cod);
+                InterfazVenta_Reserva.prenda=prenda;
+                InterfazVenta_Reserva.Cod_producto.setText(String.valueOf(prenda.getCod_producto()));
+                InterfazVenta_Reserva.txtprenda.setText("Producto : "+prenda.getDescripcion_producto());
+                InterfazVenta_Reserva.txttipo.setText("Tipo de Prenda : "+prenda.getTipodeprenda());
+                InterfazVenta_Reserva.txtsexo.setText("Sexo : "+ prenda.getSexo());
+                  
+                if (!"Pantalon".equals(prenda.getTipodeprenda())) {
+                    InterfazVenta_Reserva.talle.addItem("XS");
+                    InterfazVenta_Reserva.talle.addItem("S");
+                    InterfazVenta_Reserva.talle.addItem("M");
+                    InterfazVenta_Reserva.talle.addItem("L");
+                    InterfazVenta_Reserva.talle.addItem("XL");
+                    InterfazVenta_Reserva.talle.addItem("2XL");
+                    InterfazVenta_Reserva.talle.addItem("3XL");
+                } else {
+                    InterfazVenta_Reserva.talle.addItem("36");
+                    InterfazVenta_Reserva.talle.addItem("38");
+                    InterfazVenta_Reserva.talle.addItem("40");
+                    InterfazVenta_Reserva.talle.addItem("42");
+                    InterfazVenta_Reserva.talle.addItem("44");
+                    InterfazVenta_Reserva.talle.addItem("46");
+                    InterfazVenta_Reserva.talle.addItem("48");
+                }
+                
             this.dispose();
-
         }
     }//GEN-LAST:event_jTablaMousePressed
 
@@ -178,28 +193,29 @@ static int Comprueba;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfazBuscarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazBuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfazBuscarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazBuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfazBuscarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazBuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfazBuscarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazBuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazBuscarCliente().setVisible(true);
+                new InterfazBuscarProducto().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTabla;

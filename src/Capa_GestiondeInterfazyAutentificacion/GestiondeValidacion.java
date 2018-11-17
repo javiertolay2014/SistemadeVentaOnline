@@ -7,7 +7,7 @@ package Capa_GestiondeInterfazyAutentificacion;
 import CapaInterfaz.InterfazRegistrarAdmin;
 import CapaInterfaz.InterfazPrincipal;
 import CapaInterfaz.InterfazValidacion;
-import CapaInterfaz.InterfazReserva;
+import CapaInterfaz.InterfazVenta_Reserva;
 import CapadeGestionDeBD.Persona;
 import java.awt.HeadlessException;
 import java.beans.PropertyVetoException;
@@ -54,7 +54,7 @@ public class GestiondeValidacion {
            //     InterfazPrincipal.JmiHerramientas.setEnabled(true);
                 InterfazPrincipal.JmIUsuarios.setEnabled(true);
                 InterfazPrincipal.JmIClientes.setEnabled(true);
-                InterfazReserva ventanaventa = new InterfazReserva();
+                InterfazVenta_Reserva ventanaventa = new InterfazVenta_Reserva();
                 InterfazPrincipal.deskPricipal.add(ventanaventa); 
                     ventanaventa.toFront();
                     ventanaventa.setClosable(true);

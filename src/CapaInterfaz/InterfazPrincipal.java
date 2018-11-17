@@ -48,7 +48,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     public void abrirVenta() {
 
         //FrmVentaDetalle form = new FrmVentaDetalle();
-        InterfazReserva form = new InterfazReserva();
+        InterfazVenta_Reserva form = new InterfazVenta_Reserva();
         deskPricipal.add(form);
 
         //   form.setMaximizable(true);
