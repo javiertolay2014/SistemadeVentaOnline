@@ -1,4 +1,5 @@
 package CapaInterfaz;
+//VERSION 1.0
 import CapadeGestionDeBD.conexion;
 import java.awt.Graphics;
 import java.beans.PropertyVetoException;
